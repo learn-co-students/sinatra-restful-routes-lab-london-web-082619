@@ -1,0 +1,19 @@
+<h2>Recipe Details</h2>
+
+<p>
+<h3>Name:</h3> <%=@recipe.name%> 
+</p>
+
+<p>
+<h3>Ingredients:</h3> <%=@recipe.ingredients%> 
+</p>
+
+<p>
+<h3>Cook Time:</h3> <%=@recipe.cook_time%> 
+</p>
+
+<!-- A form to allow a user to delete this instance of book by making a post request to the URL of this book and then using Rack::MethodOverride to override it with a delete request. -->
+<form class="" action="/recipes/<%= @recipe.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" name="delete" id="delete" value="Delete">
+</form>
