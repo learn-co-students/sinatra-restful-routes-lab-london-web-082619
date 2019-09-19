@@ -6,39 +6,39 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
   end
   
-  # index
+  # Index
   get '/recipes' do
     @recipes = Recipe.all
     erb :index
   end
 
-  # new
+  # New
   get '/recipes/new' do
     @recipe = Recipe.new
     erb :new
   end
 
-  # create recieve data from new. do NOT forget ?!!
+  # Create recieve data from new. DO NOT FORGET?!!
   post '/recipes/?' do  
-    @recipe = Recipe.create(params)
+    @recipe = Recipe.create(params) # Can use params to set all attributes together as there is no _method involved at this stage
     redirect to "/recipes/#{@recipe.id}"
   end
   
-  # show
+  # Show
   get '/recipes/:id' do
     @recipe = Recipe.find(params[:id])
     erb :show
   end
 
-  # edit
+  # Edit
   get '/recipes/:id/edit' do
     @recipe = Recipe.find(params[:id])
     erb :edit
   end
   
-  # update recieve data from edit
+  # Update recieve data from edit
   patch '/recipes/:id' do
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.find(params[:id])  # Can NOT use params as _method involved. Compare with Create
     @recipe.name = params[:name]
     @recipe.ingredients = params[:ingredients]
     @recipe.cook_time = params[:cook_time]
@@ -46,7 +46,7 @@ class ApplicationController < Sinatra::Base
     redirect to "/recipes/#{@recipe.id}"
   end
   
-  # destroy
+  # Destroy
   delete '/recipes/:id' do
     Recipe.destroy(params[:id])
     redirect to "/recipes"
