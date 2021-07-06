@@ -1,0 +1,14 @@
+<form action='/recipes/<%=@recipe.id%>' method="post">
+   <div class ="recipe_new">
+    <label for="recipe_name">Name: </label>
+    <input type="text" id="recipe_name" name="name" value="<%=@recipe.name%>">
+    <label for="ingredients_list">Ingredients: </label>
+    <input type="text" id="ingredients_list" name="ingredients" value="<%=@recipe.ingredients%>">
+    <label for="cooking_time">Cook Time: </label>
+    <input type="text" id="cooking_time" name="cook_time" value="<%=@recipe.cook_time%>"><br><br>
+    <input type="submit" id="Submit" value="Submit">
+    <%if @recipe.id%>
+    <input type="hidden" name="_method" value="patch">
+    <% end %>
+   </div>
+</form>
