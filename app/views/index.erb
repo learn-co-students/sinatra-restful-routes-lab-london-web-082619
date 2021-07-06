@@ -1,0 +1,9 @@
+<h1>Welcome to Grannies recipes! </h1>
+
+<% @all.each do |recipes| %>
+    <p>
+        <a href="/recipes/<%= recipes.id %>"><%= recipes.name %></a>
+    </p>
+    <p> <%= recipes.ingredients %> </p> 
+    <p> <%= recipes.cook_time %> </p>
+<% end %> 
